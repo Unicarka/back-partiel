@@ -22,4 +22,11 @@ try {
 } catch (Exception $e) {
     echo "Erreur de connexion : " . $e->getMessage();
 }
+if ($row && password_verify($password, $row['password'])) {
+    $_SESSION['username'] = $username;
+    header("Location: /success.html");
+    exit;
+} else {
+    echo "Identifiants invalides.";
+}
 ?>
